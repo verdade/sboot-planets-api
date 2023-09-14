@@ -1,0 +1,80 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.openapi.generator' version "$openApiGeneratorVersion"
+	id 'jacoco'
+	id 'java'
+	id 'org.sonarqube' version '2.7'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+}
+version = '0.0.1-SNAPSHOT'
+archivesBaseName = 'service'
+java {
+	withSourcesJar()
+}
+repositories {
+	mavenCentral()
+}
+
+apply from: "dependencies.gradle"
+sourceCompatibility = 11
+targetCompatibility = 11
+sourceSets {
+	componentTest {
+		compileClasspath += main.output + test.output
+		runtimeClasspath += main.output + test.output
+	}
+}
+jacoco {
+	toolVersion = "0.8.3"
+}
+test {
+	useJUnitPlatform()
+}
+test.finalizedBy project.tasks.jacocoTestReport
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.destination file("${buildDir}/coverage_report")
+	}
+}
+
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2020.0.2'
+	}
+}
+
+dependencies {
+	implementation "io.swagger.parser.v3:swagger-parser:$swaggerParserVersion"
+	implementation "org.openapitools:jackson-databind-nullable:$jacksonDataBindVersion"
+	compile 'org.springframework.boot:spring-boot-starter-web'
+
+	springBoot {
+		buildInfo()
+	}
+
+	openApiGenerate {
+		generatorName = "spring"
+		inputSpec = "$projectDir/src/main/resources/swagger/sboot-planets.yaml"
+		outputDir = "$buildDir/generated/sources/swagger"
+		apiPackage = "br.com.planets.api.representation"
+		invokerPackage = "br.com.planets.api"
+		modelPackage = "br.com.planets.api.models"
+		configOptions = [
+				dateLibrary  : "java8",
+				interfaceOnly: "true",
+		]
+		typeMappings = [
+				OffsetDateTime: "LocalDateTime"
+		]
+		importMappings = [
+				"java.time.OffsetDateTime": "java.time.LocalDateTime"
+		]
+	}
+	sourceSets.main.java.srcDir "$buildDir/generated/sources/swagger/src/main/java"
+	sourceSets.main.resources.srcDir "$buildDir/generated/sources/swagger/src/main/resources"
+}
+
+
