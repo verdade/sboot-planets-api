@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "be1a113d-cbde-478d-bc36-e3f2af16fecc",
+		"name": "PLANETS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1830487"
+	},
+	"item": [
+		{
+			"name": "New Planet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 7,\n    \"name\": \"Endor\",\n    \"terrain\": \"forests, mountains, lakes\",\n    \"climate\": \"temperate\"\n}\n\n\n\n"
+				},
+				"url": {
+					"raw": "localhost:8080/planets/v1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Planets By Name",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Alderaan\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/planets/v1/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"v1",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Planets By ID",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/planets/v1/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"v1",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search All Planets",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "localhost:8080/planets/v1/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"v1",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Planet",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/planets/v1/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"planets",
+						"v1",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

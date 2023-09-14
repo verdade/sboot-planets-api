@@ -85,10 +85,10 @@ INSERT INTO tb_planets
 (id, name, terrain, climate, films, created_at)
 VALUES(6, 'Bespin', 'gas giant', 'temperate', 1, '2022-07-05 20:20:39');
 
-INSERT INTO tb_planets
-(id, name, terrain, climate, films, created_at)
-VALUES(7, 'Endor', 'forests, mountains, lakes', 'temperate', 1, '2022-07-05 20:20:39');
-
-INSERT INTO tb_planets
-(id, name, terrain, climate, films, created_at)
-VALUES(8, 'Naboo', 'grassy hills, swamps, forests, mountains', 'temperate', 4, '2022-07-05 20:20:39');
+--INSERT INTO tb_planets
+--(id, name, terrain, climate, films, created_at)
+--VALUES(7, 'Endor', 'forests, mountains, lakes', 'temperate', 1, '2022-07-05 20:20:39');
+--
+--INSERT INTO tb_planets
+--(id, name, terrain, climate, films, created_at)
+--VALUES(8, 'Naboo', 'grassy hills, swamps, forests, mountains', 'temperate', 4, '2022-07-05 20:20:39');
